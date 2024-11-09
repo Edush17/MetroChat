@@ -10,9 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dettaglio-metro.component.css',
 })
 export class DettaglioMetroComponent {
+
+  @Input() metro?: Metro;
+
   chiudi() {
     this.metro = undefined;
   }
-
-  @Input() metro?: Metro;
 }

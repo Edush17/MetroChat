@@ -1,6 +1,11 @@
 <h1>Treni in arrivo</h1>
-<div class="listatreni">
-  <app-metro *ngFor="let metro of listaMetro" (inPartenza)="partiti($event)" [datiIn]="metro" [ora]="now" (click)="setMetro(metro)"></app-metro>
-  <p>{{treniPartiti}}</p>
-  <app-dettaglio-metro [metro]="metroSelezionata"></app-dettaglio-metro>
+<div class="listatreni" *ngIf="listaMetro">
+  <ng-container *ngFor="let metro of listaMetro">
+    <app-metro
+      [datiIn]="metro"
+      [ora]="now"
+      (click)="setMetro(metro)"
+    ></app-metro>
+  </ng-container>
 </div>
+<app-dettaglio-metro [metro]="metroSelezionata"></app-dettaglio-metro>

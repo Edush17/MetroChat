@@ -13,10 +13,20 @@ import { DettaglioMetroComponent } from '../metro/dettaglio-metro/dettaglio-metr
   styleUrl: './lista-metro.component.css',
 })
 export class ListaMetroComponent {
+  
+  listaMetro?: Metro[];
   metroSelezionata?: Metro;
-  listaMetro: Metro[] = LISTAMETRO;
-  now = new Date().getTime();
+  now!: number;
   treniPartiti?: string;
+
+  constructor(){
+    this.listaMetro = []
+  }
+
+  ngOnInit(){
+    this.listaMetro = LISTAMETRO;
+    this.now = new Date().getTime();
+  }
 
   setMetro(metro: Metro) {
     this.metroSelezionata = metro;
