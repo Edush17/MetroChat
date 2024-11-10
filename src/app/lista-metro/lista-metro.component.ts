@@ -26,6 +26,7 @@ export class ListaMetroComponent {
   ngOnInit(){
     this.listaMetro = LISTAMETRO;
     this.now = new Date().getTime();
+    console.log('now', this.now);
   }
 
   setMetro(metro: Metro) {
