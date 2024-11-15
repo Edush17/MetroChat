@@ -19,23 +19,33 @@ export class MetroComponent {
   stato?: Object;
   oraPartenza?: number;
   attesa?: number;
+  intervalId?: any;
+  i: number = 0;
 
   ngOnInit() {
     this.oraPartenza = this.datiIn?.tempo;
     // tempo mancante alla partenza
     this.attesa = this.ora;
     console.log('attesa', this.attesa);
-
-    let x = setInterval(() => {
-      if (this.attesa) {
-        this.attesa = this.attesa - 1000;
-      }
-
-      if (this.attesa && this.attesa <= 0) {
-        clearInterval(x);
-        this.inPartenza.emit(this.datiIn?.idt);
-        //this.stato = { display: 'none' };
+    this.inPartenza.emit('evento emesso');
+    this.intervalId = setInterval(() => {
+      this.i++;
+      console.log('interval', this.i);
+      if (this.i === 10) {
+        clearInterval(this.intervalId);
       }
     }, 1000);
+
+    // let x = setInterval(() => {
+    //   if (this.attesa) {
+    //     this.attesa = this.attesa - 1000;
+    //   }
+    //   if (this.attesa! <= 0) {
+    //     clearInterval(x);
+    //     this.inPartenza.emit('prova');
+    //     // this.inPartenza.emit(this.datiIn?.idt);
+    //     // this.stato = { display: 'none' };
+    //   }
+    // }, 1000);
   }
 }

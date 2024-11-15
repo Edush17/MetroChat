@@ -33,7 +33,8 @@ export class ListaMetroComponent {
     this.metroSelezionata = metro;
   }
 
-  partiti(id: string) {
-    this.treniPartiti += "|" + id;
+  partiti(event: string) {
+    console.log('ok', event)
+    this.treniPartiti += "|" + event;
   }
 }
