@@ -1,6 +1,6 @@
-<div [ngStyle]="stato">    
-    <p>Linea: {{datiIn.linea}}</p>
-    <p>Partenza: {{datiIn.tempo}}</p>
-    <p>{{attesa! | mmss}}</p>
+<div>    
+    <p>Linea: {{datiIn?.linea}}</p>
+    <p>Partenza: {{datiIn?.tempo}}</p>
+    <p *ngIf="attesa">{{attesa | mmss}}</p>
     <hr/>
 </div>

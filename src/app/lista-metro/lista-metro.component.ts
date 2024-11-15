@@ -16,7 +16,7 @@ export class ListaMetroComponent {
   
   listaMetro?: Metro[];
   metroSelezionata?: Metro;
-  now!: number;
+  now?: number;
   treniPartiti?: string;
 
   constructor(){

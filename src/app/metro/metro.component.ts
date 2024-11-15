@@ -11,8 +11,8 @@ import { MmssPipe } from '../pipe/mmss.pipe';
   styleUrl: './metro.component.css',
 })
 export class MetroComponent {
-  @Input() datiIn!: Metro;
-  @Input() ora!: number;
+  @Input() datiIn?: Metro;
+  @Input() ora?: number;
 
   @Output() inPartenza = new EventEmitter<string>();
 
@@ -24,11 +24,14 @@ export class MetroComponent {
     this.oraPartenza = this.datiIn?.tempo;
     // tempo mancante alla partenza
     this.attesa = this.ora;
-    console.log('attesa', this.attesa)
+    console.log('attesa', this.attesa);
 
     let x = setInterval(() => {
-      this.attesa! = this.attesa! - 1000;
-      if (this.attesa! <= 0) {
+      if (this.attesa) {
+        this.attesa = this.attesa - 1000;
+      }
+
+      if (this.attesa && this.attesa <= 0) {
         clearInterval(x);
         this.inPartenza.emit(this.datiIn?.idt);
         //this.stato = { display: 'none' };
